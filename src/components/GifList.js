@@ -1,31 +1,12 @@
 import React from "react";
 
-class GifSearch extends React.Component {
+const GifList = props => {
+  console.log(props); // array of 3 gif objects
+  return (
+    <ul>
+          <li>{props.gifs.map(gif => <img key={gif.url} src={gif.url} alt="gif"/>)} </li>
+    </ul>
+  );
+};
 
-    state = {
-        query: ""
-      };
-
-
-      handleSubmit = event => {
-        event.preventDefault()
-
-        this.props.fetchGIFs(this.state.query) // calls parent method with NEW SET value arg
-     //   debugger
-    }
-
-        render() {
-            return (
-              <div>
-                <form onSubmit={this.handleSubmit}>
-                  <input
-                  type="text"
-                  value={this.state.query}
-                  onChange={event => this.setState({query: event.target.value})} />
-                </form>
-              </div>
-            )
-          }
-        // onChange sets new state on event value input
-        }
- export default GifSearch
+ export default GifList
